@@ -1,17 +1,15 @@
 {
-  "extends": "@vue/tsconfig/tsconfig.dom.json",
+  "extends": "@vue/tsconfig/tsconfig.dom.json", // 继承 Vue 的 DOM 环境基础配置
   "compilerOptions": {
-    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
-
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo", // 增量编译的缓存文件路径
     /* Linting */
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true,
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true
+    "strict": true, // 启用所有严格类型检查
+    "noUnusedLocals": true, // 未使用的局部变量报错
+    "noUnusedParameters": true, // 未使用的函数参数报错
+    "noFallthroughCasesInSwitch": true, // switch 语句缺少 break 报错
+    "noUncheckedSideEffectImports": true, // 禁止未检查副作用模块的导入
+    "allowSyntheticDefaultImports": true, // 允许从无默认导出的模块中默认导入
+    "esModuleInterop": true // 改进 CommonJS/ES6 模块互操作性
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"]
-
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"] // 编译范围：TS/TSX/Vue 文件
 }

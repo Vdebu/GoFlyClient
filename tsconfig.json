@@ -1,13 +1,12 @@
 {
-  "files": [],
+  "files": [], // 显式声明空文件列表（通常配合 references 使用）
   "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
+    { "path": "./tsconfig.app.json" }, // 引用应用配置
+    { "path": "./tsconfig.node.json" } // 引用 Node.js 配置（如后端或工具脚本）
   ],
-  "path": {
-    // 设置别名
-    "@/*": ["src/*"],
-  },
-  // 方便模块引入
-  "allowSyntheticDefaultImports": true
+  "compilerOptions": {
+    "paths": { // 路径别名
+      "@/*": ["src/*"]
+    },
+  }
 }

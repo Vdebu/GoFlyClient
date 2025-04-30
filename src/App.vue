@@ -1,6 +1,6 @@
 <template>
   <div>
-    Test
+    {{ app.getConfig("bModNames") }}
   </div>
 </template>
 
