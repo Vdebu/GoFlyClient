@@ -1,9 +1,9 @@
 // 处理初始化步骤1中的所有细节
 
 import app from "./app";
-
+import tools from "../assets/utils/tools.ts";
 // 对能挂载的key作出限定
-type IGlobalVarsKey = 'app' | 'lpk' | 'Tools' | 'Ajax'
+type IGlobalVarsKey = 'app' | 'lpk' | 'tools' | 'Ajax'
 // 使用特定类型进行实现
 type IGlobalVars = {
     // 可选的但是必须有
@@ -12,6 +12,7 @@ type IGlobalVars = {
 // 全局应用对象包含全局数据与操作方法
 const iGlobalVars: IGlobalVars = {
     app,
+    tools
 }
 // 遍历对象进行绑定
 Object.keys(iGlobalVars).forEach(stKey => {

@@ -16,7 +16,12 @@ import {initApp} from "./config/init.ts";
     // 初始化UI
     const uiApp = createApp(App)
     // 在创建出来的app上注册全局的组件
+    // 在做的事情是将全局对象挂战到Vue应用的全局属性中
+    // 使这些对象在任何组件中都可以通过(this.app)和(this.tools)访问
     uiApp.config.globalProperties.app = window.app
+    // 每个应用实例(通过(createApp()创建)都拥有自己的配置对象config
+    // 这个配置对象允许我们在应用层面上设置各种全局选项从而影响整个应用的行为
+    uiApp.config.globalProperties.tools = window.tools
     // 向根组件绑定全局对象
     // 状态管理与路由的初始化并渲染根组件
     uiApp.mount('#app')
