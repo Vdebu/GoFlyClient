@@ -57,14 +57,10 @@ export const lpk: IFnLpk = (key, options) => {
   // 获取载入语言包中的键值信息
   // lpk('zh-CN',{idx:1,default:''})
   const mixValue = tblLpk[key]
+  // 数组越界访问是不会报错的
   if (isArray(mixValue)) {
-    // 判断是否是数组
-    if (!mixValue.length) {
-      // 数组是空的先尝试返回默认值如果为空就原封不动返回key
-      return options?.default || key
-    }
     // 返回索引下的值(避免undefined原封不动返回key保底)
-    return mixValue[options?.index || 0] || key
+    return mixValue[options?.index || 0] || options?.default || key
   }
   // 单个string不是数组
   return mixValue || options?.default || key

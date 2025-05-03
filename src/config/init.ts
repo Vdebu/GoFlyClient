@@ -3,6 +3,7 @@
 import app from './app'
 import tools from '../utils/tools.ts'
 import { initLpk, lpk } from './lpk.ts'
+import { initLoginUserInfo } from '../controller/AppCtl.ts'
 // 对能挂载的key作出限定
 type IGlobalVarsKey = 'app' | 'lpk' | 'tools' | 'Ajax'
 // 使用特定类型进行实现
@@ -23,6 +24,8 @@ Object.keys(iGlobalVars).forEach(stKey => {
 })
 // 作为方法导出(导出后上面的代码块会自动执行)
 export const initApp = async () => {
+  // 初始化基础业务相关信息(当前登录用户信息)
+  await initLoginUserInfo()
   // 初始化语言包
   initLpk()
 }

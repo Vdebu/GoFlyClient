@@ -11,6 +11,10 @@ import { initApp } from './config/init.ts'
   // 保证所有模块初始化完成后再创建UI
   // 1.app,lpk(语言包),Ajax(与后端交互的方法),Tools(dom节点CRUD)
   // 2.异步初始化基础模块的配置信息
+  // [1]加载系统当前的状态信息
+
+  // [2]加载当前用户的登录信息
+
   // 3.异步加载业务模块初始化信息
   await initApp()
   // 初始化UI
