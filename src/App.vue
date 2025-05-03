@@ -1,17 +1,24 @@
 <template>
   <div>
-    {{ app.getConfig("bModNames") }}
-    <br>
-    {{tools.LocalStorage.getItem("miku")}}
+    {{ app.getConfig('bModNames') }}
+    <br />
+    {{ tools.LocalStorage.getItem('miku') }}
+    <br />
+    <div>
+      {{ lpk('Index') }}
+    </div>
+    <br />
+    <div>
+      {{ lpk('Type', { index: 3 }) }}
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-  import tools from "./assets/utils/tools.ts";
-
-  tools.LocalStorage.setItem("miku","39")
+  import { lpk } from './config/lpk.ts'
+  // console.log(app.getAppCtl().changeLocale('en-US'))
+  console.log(lpk('Index'))
+  tools.LocalStorage.setItem('miku', '39')
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
