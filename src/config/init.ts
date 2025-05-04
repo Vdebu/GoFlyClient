@@ -28,4 +28,14 @@ export const initApp = async () => {
   await initLoginUserInfo()
   // 初始化语言包
   initLpk()
+  // 初始化业务模块信息
+  // 获取所有业务模块中的初始化方法(./src/bmod/*/entry.ts)
+  // 默认返回相关函数使用eager进行副作用应用
+  const iAllEntry: GlobalType.IRecord = import.meta.glob('@/bmod/*/entry.ts', { eager: true })
+  for (const path in iAllEntry) {
+    // 提取所有的初始化方法
+    const iEntryFile = iAllEntry[path]
+    // 有没有文件 -> 是否存在方法 -> 执行
+    iEntryFile && iEntryFile.entryInit && (await iEntryFile.entryInit())
+  }
 }

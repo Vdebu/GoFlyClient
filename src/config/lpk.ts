@@ -30,7 +30,7 @@ type ILpkFile = {
     default: Record<string, string | string[]>
   }
 }
-// 将获取到的语言包信息整合使用
+// 将获取到的语言包信息整合使用(传入获取到的所有文件地址)
 export const mergeLpk = (lpkFiles: ILpkFile) => {
   // 将文件内容整合到tblLpk
   // 获取语言包信息

@@ -1,5 +1,5 @@
 import userAPI, { type IUser } from '../api/UserAPI.ts'
-import { changeLocale } from '../config/lpk'
+import { changeLocale, mergeLpk } from '../config/lpk'
 import { LOGIN_TOKEN } from '../utils/Constants.ts'
 
 let iLoginUser: IUser = {} as IUser
@@ -16,4 +16,5 @@ export default {
     return iLoginUser
   },
   changeLocale,
+  mergeLpk,
 }
