@@ -6,7 +6,7 @@ import 'normalize.css/normalize.css'
 import './assets/fonts/iconfont.css'
 // 引入全局样式
 import './assets/styles/global.scss'
-import { initApp } from './config/init.ts'
+import { initApp, initGlobalComponents } from './config/init.ts'
 ;(async () => {
   // 保证所有模块初始化完成后再创建UI
   // 1.app,lpk(语言包),Ajax(与后端交互的方法),Tools(dom节点CRUD)
@@ -19,6 +19,8 @@ import { initApp } from './config/init.ts'
   await initApp()
   // 初始化UI
   const uiApp = createApp(App)
+  // 注册全局组件
+  initGlobalComponents(uiApp)
   /**
    * 在创建出来的app上注册全局的组件使这些对象在任何组件中都可以通过(this.app)和(this.tools)访问
    * 允许在应用层面上设置各种全局选项从而影响整个应用的行为

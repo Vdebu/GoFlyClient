@@ -4,6 +4,7 @@ import app from './app'
 import tools from '../utils/tools.ts'
 import { initLpk, lpk } from './lpk.ts'
 import { initLoginUserInfo } from '../controller/AppCtl.ts'
+import type { App } from 'vue'
 // 对能挂载的key作出限定
 type IGlobalVarsKey = 'app' | 'lpk' | 'tools' | 'Ajax'
 // 使用特定类型进行实现
@@ -38,4 +39,20 @@ export const initApp = async () => {
     // 有没有文件 -> 是否存在方法 -> 执行
     iEntryFile && iEntryFile.entryInit && (await iEntryFile.entryInit())
   }
+}
+
+// 初始化全局组件
+export const initGlobalComponents = (uiApp: App<Element>) => {
+  // 导入组件 ./src/components/(icon)/src/icon.vue
+  const iAllComponents: GlobalType.IRecord = import.meta.glob('@/components/*/src/*.vue', {
+    eager: true,
+  })
+  // 挂载对应的kv对
+  Object.keys(iAllComponents).map(path => {
+    // 分割出子组件文件夹名作为key
+    const pathParts = path.split('/')
+    const stCmpName = pathParts[pathParts.length - 3]
+    // 挂载子组件
+    uiApp.component(stCmpName, iAllComponents[path].default)
+  })
 }
