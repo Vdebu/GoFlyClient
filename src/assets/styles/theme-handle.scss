@@ -1,0 +1,44 @@
+// theme-handle.scss
+$theme: (
+        "blue": (
+                primary-bg: #66ccff,
+                primary-color: #FFF,
+                menu-bg: #69c5bb,
+                menu-text-color: #96c5bb,
+                big-size: 20px,
+                normal-size: 12px,
+        ),
+        "black": (
+                primary-bg: #66ccff,
+                primary-color: #FFF,
+                menu-bg: #69c5bb,
+                menu-text-color: #96c5bb,
+                big-size: 20px,
+                normal-size: 12px,
+        )
+);
+
+// 使用现代 Sass 语法
+@use "sass:map";
+
+// 简化的主题混入
+@mixin theme($property, $key) {
+  @each $theme-name, $theme-map in $theme {
+    [data-theme="#{$theme-name}"] & {
+      #{$property}: map.get($theme-map, $key);
+    }
+  }
+}
+
+// 背景混入，设置默认值
+@mixin bg($bg: 'primary-bg') {
+  @include theme(background-color, $bg);
+}
+
+// 文字颜色混入，设置默认值
+@mixin color($color: 'primary-color') {
+  @include theme(color, $color);
+}
+@mixin font-size($size: 'big-size') {
+  @include theme(font-size, $size); // 正确的CSS属性是 font-size，不是 size
+}

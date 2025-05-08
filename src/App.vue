@@ -19,15 +19,12 @@
   <div>
     <van-button plain>空心按钮</van-button>
     <van-button type="primary">主要按钮</van-button>
-    <van-button type="success">成功按钮</van-button>
-    <van-button type="default">默认按钮</van-button>
-    <van-button type="danger">危险按钮</van-button>
-    <van-button type="warning">警告按钮</van-button>
-    <van-button loading type="primary" />
-    <van-button loading type="primary" loading-type="spinner" />
-    <van-button loading type="success" loading-text="加载中..." />
-    <van-cell title="选择单个日期" :value="date" @click="show = true" />
-    <van-calendar v-model:show="show" @confirm="onConfirm" />
+  </div>
+  <div data-theme="blue">
+    <!--    [data-theme="#{$theme-name}"] & 这个选择器在没有设置 data-theme 属性的情况下无法匹配任何元素。-->
+    <div class="theme">
+      <div class="theme-item" v-for="idx in 3">{{ idx }}</div>
+    </div>
   </div>
 </template>
 
@@ -37,7 +34,22 @@
   // console.log(app.getAppCtl().changeLocale('en-US'))
   console.log(lpk('Index'))
   tools.LocalStorage.setItem('miku', '39')
-  let show: boolean = true
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+  @use './assets/styles/theme-handle';
+  .theme {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .theme-item {
+    margin: 10px 20px;
+    width: 30%;
+    padding: 30px 0;
+    text-align: center;
+    @include theme-handle.font-size('big-size');
+    @include theme-handle.bg('primary-bg');
+    @include theme-handle.color('menu-text-color');
+  }
+</style>

@@ -27,6 +27,11 @@ Object.keys(iGlobalVars).forEach(stKey => {
 export const initApp = async () => {
   // 初始化基础业务相关信息(当前登录用户信息)
   await initLoginUserInfo()
+  // 初始化主题
+  // 1.针对不同主题书写不同的样式文件在熊初始化时根据当前主题到后端去加载文件
+  // 2.通过SCSS中的变量与函数实现主题的定制
+  // 3.通过SCSS中的变量实现主题定制
+
   // 初始化语言包
   initLpk()
   // 初始化业务模块信息
