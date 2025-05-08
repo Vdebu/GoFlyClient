@@ -1,5 +1,8 @@
 import { get, isArray } from 'lodash'
 import tools from '../utils/tools.ts'
+import { Locale } from 'vant'
+import enUS from 'vant/es/locale/lang/en-US'
+import jaJP from 'vant/es/locale/lang/ja-JP'
 // 语言包通用kv类型
 const tblLpk: Record<string, string | string[]> = {}
 const LocalStorageName = 'locale'
@@ -8,6 +11,21 @@ export const initLpk = () => {
   // 从本地获取所有的语言包信息(/src/locales)
   // eager:true -> 热启动
   mergeLpk(import.meta.glob('@/locales/*', { eager: true }))
+  // 初始三方库的语言包
+  initThirdUILpk()
+}
+// 初始化三方库的Lpk
+const initThirdUILpk = () => {
+  const tblThirdLpk: GlobalType.IRecord = {
+    'en-US': enUS,
+    jp: jaJP,
+  }
+  const stLocale = getLocale()
+  // 检查当前语言环境
+  // 通过kv对的形式检查是否使用了英文环节
+  // 如果是就进行更换 默认是中文无需进行更换
+
+  tblThirdLpk[stLocale] && Locale.use(stLocale, enUS)
 }
 // 返回当前使用的语言包
 export const getLocale = () => {

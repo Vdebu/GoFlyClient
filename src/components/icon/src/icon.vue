@@ -12,7 +12,7 @@
 </script>
 
 <template>
-  <!--  动态更新图标-->
+  <!--根据类名动态更新图标-->
   <i :class="`iconfont ${icon}`"></i>
 </template>
 

@@ -4,6 +4,8 @@ import { resolve } from 'path'
 import autoprefixer from 'autoprefixer'
 import postCssPxToRem from 'postcss-pxtorem'
 import autoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
+import { VantResolver } from '@vant/auto-import-resolver'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
@@ -12,7 +14,12 @@ export default defineConfig({
       // 自动引入vue相关的API方法不必重复导入
       imports: ['vue'],
       // 设置导入位置
-      dts: 'src/auto-imports.d.ts',
+      dts: 'src/types/auto-imports-vue.d.ts',
+      resolvers: [VantResolver()],
+    }),
+    Components({
+      resolvers: [VantResolver()],
+      dts: 'src/types/auto-imports-components.d.ts',
     }),
   ],
 
