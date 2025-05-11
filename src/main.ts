@@ -10,6 +10,7 @@ import './assets/fonts/iconfont.css'
 import './assets/styles/global.scss'
 import { initApp, initGlobalComponents } from './config/init.ts'
 import { Button } from 'vant'
+import { initRouter } from './router'
 ;(async () => {
   // 保证所有模块初始化完成后再创建UI
   // 1.app,lpk(语言包),Ajax(与后端交互的方法),Tools(dom节点CRUD)
@@ -35,7 +36,14 @@ import { Button } from 'vant'
   uiApp.config.globalProperties.lpk = window.lpk
   // 向根组件绑定全局对象
   // 状态管理与路由的初始化并渲染根组件
-  uiApp.mount('#app')
+
+  // 1.初始化基础模块的路由配置
+  // 2.初始化各业务模块的路由配置
+  // 3.对路由守卫进行处理
+  // 4.keep-alive的使用
   // 使用组件
+  // 注意这里不加括号使用的是函数 一般的写法应该是 先调用函数初始化变量在app.use变量
+  uiApp.use(initRouter())
   uiApp.use(Button)
+  uiApp.mount('#app')
 })()

@@ -8,6 +8,10 @@ import Components from 'unplugin-vue-components/vite'
 import { VantResolver } from '@vant/auto-import-resolver'
 // https://vite.dev/config/
 export default defineConfig({
+  server: {
+    port: 9393, // 改为其他端口
+    host: 'localhost', // 强制使用 IPv4
+  },
   plugins: [
     vue(),
     autoImport({
