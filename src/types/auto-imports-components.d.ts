@@ -9,6 +9,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     Icon: typeof import('./../components/icon/src/icon.vue')['default']
+    KeepAliveRouterView: typeof import('./../components/keep-alive-router-view/src/keep-alive-router-view.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     VanButton: typeof import('vant/es')['Button']

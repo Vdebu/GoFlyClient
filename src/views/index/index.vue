@@ -3,8 +3,10 @@
 <template>
   <div class="index-w">
     <div class="title">index.vue</div>
+    <!--    keep-alive-->
+    <keep-alive-router-view />
     <!--展示index下的子路由-->
-    <router-view />
+    <!--    <router-view />-->
     <ul class="g-flex-rsbc">
       <li>
         <!--在这里通过点击动态绑定的对象回到主页不会自动寻找children中path为空的路由进行展示-->

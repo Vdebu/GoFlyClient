@@ -40,6 +40,8 @@ export const initRouter: () => Router = () => {
           meta: {
             title: lpk('page.my.Title'),
             requireAuth: true, // 这里如果不进行设置的话就默认需要授权
+            keepAlive: false,
+            cmpName: 'my',
           },
         },
       ],
