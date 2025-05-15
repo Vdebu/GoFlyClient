@@ -1,4 +1,7 @@
 import cookies from 'js-cookie'
+// 防止API请求被缓存的随机数
+const fCachePreventRandom = Math.random()
+let nCachePreventNum = 0
 const iTools = {
   // 路由相关工具方法
   Router: {},
@@ -47,6 +50,19 @@ const iTools = {
   },
   Time: {},
   Dom: {},
+  // 展示加载信息
+  showLoadMask() {},
+  // 增加
+  addCachePrevent(url: string = '') {
+    // 判断是否是带参数的url
+    const nQueryStringStringFlagIndex = url.indexOf('?')
+    // 如果有查询参数就加个问号没就加个&
+    url +=
+      -1 === nQueryStringStringFlagIndex
+        ? '?'
+        : '&' + 'cp=' + (nCachePreventNum++ + fCachePreventRandom)
+    return url
+  },
 }
 // 导出类型
 export type ITools = typeof iTools

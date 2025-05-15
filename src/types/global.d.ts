@@ -16,6 +16,8 @@ declare global {
   const app: IApp
   const tools: ITools
   const lpk: IFnLpk
+  // 经常使用的类型
+  type ITimeout = ReturnType<typeof setTimeout>
   interface Window {
     // 提供编辑器的智能提示功能
     // 当输入 app.时会显示所有(IApp接口定义的方法和属性)
