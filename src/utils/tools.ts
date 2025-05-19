@@ -63,6 +63,8 @@ const iTools = {
         : '&' + 'cp=' + (nCachePreventNum++ + fCachePreventRandom)
     return url
   },
+  // 隐藏全局遮罩
+  hideMask() {},
 }
 // 导出类型
 export type ITools = typeof iTools

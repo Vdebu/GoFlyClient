@@ -3,6 +3,7 @@
 import type { IApp } from '../config/app.ts'
 import type { ITools } from '../utils/tools.ts'
 import type { IFnLpk } from '../config/lpk.ts'
+import type { IAjax } from '../utils/Request.ts'
 
 declare global {
   // 定义全局类型的声明
@@ -16,6 +17,7 @@ declare global {
   const app: IApp
   const tools: ITools
   const lpk: IFnLpk
+  const Ajax: IAjax
   // 经常使用的类型
   type ITimeout = ReturnType<typeof setTimeout>
   interface Window {
@@ -26,6 +28,8 @@ declare global {
     tools: ITools
     // 全局语言包
     lpk: IFnLpk
+    // 全局Ajax请求库
+    ajax: IAjax
   }
 }
 // 告诉TS在Vue组件上有可以直接通过this访问的app与tools属性

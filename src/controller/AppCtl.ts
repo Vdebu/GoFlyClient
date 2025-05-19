@@ -1,6 +1,6 @@
 import userAPI, { type IUser } from '../api/UserAPI.ts'
 import { changeLocale, mergeLpk } from '../config/lpk'
-import { LOGIN_TOKEN } from '../utils/Constants.ts'
+import { LOGIN_PATH, LOGIN_TOKEN } from '../utils/Constants.ts'
 
 let iLoginUser: IUser = {} as IUser
 export const initLoginUserInfo = async () => {
@@ -17,4 +17,8 @@ export default {
   },
   changeLocale,
   mergeLpk,
+  redirectToLogin() {
+    // 跳转到登录页面
+    document.location.href = LOGIN_PATH
+  },
 }

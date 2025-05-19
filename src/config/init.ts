@@ -2,6 +2,7 @@
 
 import app from './app'
 import tools from '../utils/tools.ts'
+import Ajax from '../utils/Request.ts'
 import { initLpk, lpk } from './lpk.ts'
 import { initLoginUserInfo } from '../controller/AppCtl.ts'
 import type { App } from 'vue'
@@ -17,6 +18,7 @@ const iGlobalVars: IGlobalVars = {
   app,
   tools,
   lpk,
+  Ajax,
 }
 // 遍历对象进行绑定
 Object.keys(iGlobalVars).forEach(stKey => {
