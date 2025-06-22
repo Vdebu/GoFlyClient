@@ -65,6 +65,34 @@ const iTools = {
   },
   // 隐藏全局遮罩
   hideMask() {},
+  // 处理API调用错误
+  processAPIError(
+    title: string,
+    res: string | { msg: string } = { msg: '' },
+    options: { bIsShowInfo: boolean } = { bIsShowInfo: true },
+  ) {
+    // 开始逐步构造对象
+    if ('string' === typeof res) {
+      res = { msg: res }
+    }
+    // 使用原先传入的title key进行消息格式化
+    title = lpk(title)
+    // 定义要展示的信息
+    const stContent = lpk(res.msg) || ''
+    const stMsg = `${title}:${stContent}`
+    // 如果不展示信息
+    if (false !== options.bIsShowInfo) {
+      tools.showError(title, stContent)
+    }
+    // 尝试输出后端返回的错误信息
+    window.console && window.console.log && window.console.log(res)
+    // 抛出错误
+    throw stMsg
+  },
+  // 展示错误信息
+  showError(title: string = '', msg: string = '') {
+    alert(`${title}:${msg}`)
+  },
 }
 // 导出类型
 export type ITools = typeof iTools

@@ -1,4 +1,15 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  import mdlUserAPI from '@/api/UserAPI.ts'
+
+  onMounted(async () => {
+    // 从后端获取数据用于初始化
+    const iUser = await mdlUserAPI.get({ id: 39 })
+    console.log('获取到的用户详情:', iUser)
+
+    const iUserList = await mdlUserAPI.list({ nPageSize: 2 })
+    console.log('获取到的用户列表', iUserList)
+  })
+</script>
 
 <template>
   <div class="index-w">
